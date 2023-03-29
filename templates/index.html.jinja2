@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Web留言板</title>
+</head>
+<body>
+    <h1>Web留言板</h1>
+    <div>
+        <h2>留言列表</h2>
+        <ul>
+            {% for message in messages %}
+            <li>{{ message.content }} ({{ message.timestamp.strftime("%Y-%m-%d %H:%M:%S") }})</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div>
+        <h2>添加留言</h2>
+        <form method="POST" action="{{ url_for('add_message') }}">
+            <textarea name="content" rows="5" cols="50"></textarea>
+            <br>
+            <input type="submit" value="提交">
+        </form>
+    </div>
+</body>
+</html>
